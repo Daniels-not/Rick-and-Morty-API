@@ -1,5 +1,5 @@
 # Rick and Morty API 🎄🎁
-![index](https://github.com/Daniels-not/Todo-Aventure-Django-/blob/main/main.png)
+![index](https://github.com/Daniels-not/Rick-and-Morty-API/blob/main/preview.png)
 
 ## Functionalities ✨
 
