@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800&family=Roboto:wght@300;400;500;700&display=swap');
+
+//? header font family
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800&family=Roboto:wght@300;400;500;700&family=Trispace:wght@800&display=swap');
+
+//? variables
+
+$colors: (
+    background: hsl(0, 0%, 98%),
+    card-background: rgb(51, 51, 51),
+
+    information-background: rgba(black, .75),
+    information-text-color: hsl(0, 0%, 88%),
+
+    border-color: hsl(0, 0%, 27%),
+    border-color-light: hsl(0, 0%, 80%),
+
+    item-text-color-name: hsl(0, 0%, 62%),
+    item-text-color-value: hsl(36, 100%, 50%),
+
+    btn-primary-color: hsl(206, 72%, 11%),
+);
+
+//? functions
+
+@function toRem($value) { //? convert px to rem
+    $remValue: ($value / 16) + rem;
+    @return $remValue;
+}
+
+
+//? resets and base styles
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+    font-size: toRem(16);
+    line-height: 1.5;
+    margin-inline: toRem(16);
+    background-color: map-get($colors, background);
+}
+
+//? header styling
+
+header {
+    text-align: center;
+    margin-block: toRem(16);
+
+    .title {
+        font-family: 'Trispace', sans-serif;
+        font-weight: 700;
+        font-size: toRem(30);
+    }
+}
+
+//? styling input component
+
+.input_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-block: toRem(16);
+}
+
+input[type=text]:focus {
+    border: toRem(3) solid map-get($colors, border-color);
+}
+
+input[type=text] {
+    padding: toRem(12) toRem(20);
+    margin: toRem(8) 0;
+    border: toRem(2) solid map-get($colors, border-color-light);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+//? styling button component
+
+button {
+    align-items: center;
+    background-clip: padding-box;
+    background-color: map-get($colors, item-text-color-value);
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    color: #fff;
+    cursor: pointer;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: toRem(16);
+    font-weight: 600;
+    line-height: 1.25;
+    padding: 12px 20px;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+button:hover,
+button:focus {
+    background-color: #fb8332;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+button:active {
+    background-color: #c85000;
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+    transform: translateY(0);
+}
+
+#btnGenerate {
+    background-color: map-get($colors, btn-primary-color);
+}
+
+//? styling card components
+
+#card_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: toRem(300);
+	background: map-get($colors, card-background);
+	border-radius: toRem(10);
+	overflow: hidden;
+	margin: toRem(10);
+}
+
+.card-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+    &-image {
+        object-fit: contain;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    
+    .hero-name {
+        font-size: toRem(25);
+        font-weight: 400;
+    }
+    
+    .small-text {
+        font-size: toRem(13);
+    }
+}
+
+.header-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: map-get($colors,information-background);
+    padding: toRem(12);
+    color: map-get($colors, information-text-color);
+}
+
+
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: toRem(250);
+    padding: toRem(20);
+    
+    .info-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border-top: 1px solid map-get($colors, border-color);
+        padding: toRem(10) 0;
+        
+        .name {
+            text-transform: uppercase;
+            font-size: toRem(11);
+            color: map-get($colors, item-text-color-name);
+        }
+        
+        .value {
+            font-size: toRem(14);
+            color: map-get($colors, item-text-color-value);
+        }
+        
+        &:first-child {
+            border-top: none;
+        }
+    }
+}
+
+//* cards design has been taken from codepen repo : https://codepen.io/uzvername/pen/dQeppG
